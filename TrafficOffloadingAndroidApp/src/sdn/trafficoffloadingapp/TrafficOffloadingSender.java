@@ -1,4 +1,4 @@
-package sdn.trafficofflodingapp;
+package sdn.trafficoffloadingapp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

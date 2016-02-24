@@ -1,5 +1,5 @@
 
-package sdn.trafficofflodingapp;
+package sdn.trafficoffloadingapp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -39,7 +39,7 @@ import android.preference.PreferenceManager;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.widget.Toast;
-import sdn.trafficofflodingapp.MainActivity.UDPReceiver;
+import sdn.trafficoffloadingapp.MainActivity.UDPReceiver;
 import android.net.NetworkInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -55,15 +55,11 @@ public class TrafficOffloadingListener extends IntentService {
 	private DatagramSocket socket = null;
 	private WifiScanReceiver wifiScanReceiver; // used for scan wifi ap
     String LOG_TAG = "TrafficOffloading";
-	private int scanAPNum;
 
 	// acc sensor
 	private boolean startScanFlag = false;
 
 	// some defaults
-	private String UDP_SERVER_PORT_KEY = "recv_udp_port";
-	private String UDP_SERVER_PORT_DEFAULT = "1622";// "7755";
-	private int UDP_SERVER_PORT = 1622;// 7755;
 	private String TOKEN = "\\|";
 	private String CONTROLLER_ADDRESS = "141.223.107.139";
 	private int CONTROLLER_PORT = 1622;
@@ -120,17 +116,15 @@ public class TrafficOffloadingListener extends IntentService {
 					scanResult.append("|other");
 				}
 				List<ScanResult> scanResultList = wifiManager.getScanResults();
-				scanAPNum = 0;
 				for (ScanResult r : scanResultList) {
-					scanAPNum++;
 					scanResult.append("|" + r.SSID + "&" + r.BSSID + "&" + r.level);
 				}
 				Log.d(LOG_TAG, "scan result message: " + scanResult.toString());
 				// send reply
 				try {
-					InetAddress ipAddr = InetAddress.getByName("141.223.107.139");
+					InetAddress ipAddr = InetAddress.getByName(CONTROLLER_ADDRESS);
 					eventSender("send scan result to ONOS controller");
-					new TrafficOffloadingSender().execute(scanResult.toString(), ipAddr, 1622);
+					new TrafficOffloadingSender().execute(scanResult.toString(), ipAddr, CONTROLLER_PORT);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -156,14 +150,8 @@ public class TrafficOffloadingListener extends IntentService {
 
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-		String portString = prefs.getString(UDP_SERVER_PORT_KEY, UDP_SERVER_PORT_DEFAULT);
-		int udpServerPort = Integer.parseInt(portString);
-		if (udpServerPort < 1024 || udpServerPort > 65535) {
-			udpServerPort = UDP_SERVER_PORT;
-		}
-
 		try {
-			socket = new DatagramSocket(udpServerPort);
+			socket = new DatagramSocket(CONTROLLER_PORT);
 			
 			
 			
@@ -306,7 +294,7 @@ public class TrafficOffloadingListener extends IntentService {
 
 		String networkSSID = fields[1];// ssid;
 		String bssid = fields[2];
-		String passkey = fields[3];// "mcnl5684";
+		String passkey = fields[3];//
 		// eventSender("start connect to Wifi [" + networkSSID + "]");
 
 		Log.i("connect info", "ssid:" + fields[1] + " bssid:" + fields[2] + " passkey:" + fields[3]);

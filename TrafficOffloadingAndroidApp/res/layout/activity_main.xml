@@ -18,7 +18,7 @@
        android:layout_height="50dp"
        android:layout_margin="10sp"
        android:checked="false"
-       android:onClick="onSwitchSDNClicked"
+       android:onClick="onSwitchConnectONOS"
        android:switchTextAppearance="@style/SwitchTextAppearance"
        android:text="@string/sdn_control_switch_message"
        android:textColor="@android:color/black"

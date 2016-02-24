@@ -1,4 +1,4 @@
-package sdn.trafficofflodingapp;
+package sdn.trafficoffloadingapp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
+import sdn.trafficofflodingapp.R;
 
 public class MainActivity extends Activity {
 
@@ -58,7 +59,7 @@ public class MainActivity extends Activity {
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	public void onSwitchSDNClicked(View view) throws InterruptedException {
+	public void onSwitchConnectONOS(View view) throws InterruptedException {
 		udpListeningIntent = new Intent(this, TrafficOffloadingListener.class);
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean on = ((Switch) view).isChecked();
