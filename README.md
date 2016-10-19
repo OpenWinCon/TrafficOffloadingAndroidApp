@@ -21,5 +21,5 @@
 ONOS SDN 컨트롤러는 트래픽 오프로딩을 수행할 모바일 단말을 정하기 위해서 모바일 단말에 SCAN 명령을 전송하여 주위 AP 정보 스캔을 요청합니다. 이러한 요청을 받은 모바일 단말은 AP 스캔을 수행하고 ONOS SDN 컨트롤러에 결과를 보고합니다 (Figure 4 (a)). ONOS SDN 컨트롤러는 AP 스캔 정보와 AP 트래픽 모니터링 정보를 이용하여 트래픽 오프로딩을 수행할 모바일 단말과 AP (Target AP)를 결정하고 해당 모바일 단말에 CONNCET 명령을 보내 Target AP로 핸드오버를 요청하게됩니다 (Figure 4 (b)). ONOS SDN 컨트롤러의 동작은 https://github.com/MobileConvergenceLab/TrafficOffloadingONOS 를 참고해주시길 바랍니다.
 
 <img src="images/scan_connect.png">
-<figcaption>Figure 5. 안드로이드 어플리케이션 실행 화면 (a) SCAN 명령 수행 (b) CONNECT 명령 수행.</figcaption>
+<figcaption>Figure 4. 안드로이드 어플리케이션 실행 화면 (a) SCAN 명령 수행 (b) CONNECT 명령 수행.</figcaption>
 
