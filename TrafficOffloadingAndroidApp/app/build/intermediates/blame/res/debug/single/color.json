@@ -2,5 +2,9 @@
     {
         "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_text_selector.xml",
         "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\color\\switch_text_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_text_selector.xml",
+        "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\color\\switch_text_selector.xml"
     }
 ]

@@ -2,5 +2,9 @@
     {
         "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\layout\\activity_main.xml"
     }
 ]
