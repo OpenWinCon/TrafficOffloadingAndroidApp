@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="connecting_test_timeout">
+        <item name="1">1 seconds</item>
+        <item name="2">2 seconds</item>
+        <item name="3">3 seconds</item>
+        <item name="4">4 seconds</item>
+    </string-array>
+    <string-array name="connecting_test_timeout_value">
+        <item name="1">1000</item>
+        <item name="2">2000</item>
+        <item name="3">3000</item>
+        <item name="4">4000</item>
+    </string-array>
+    <string-array name="wifi_scan_interval">
+        <item name="5">5 seconds</item>
+        <item name="10">10 seconds</item>
+        <item name="15">15 seconds</item>
+        <item name="30">30 seconds</item>
+        <item name="60">60 seconds</item>
+        <item name="120">120 seconds</item>
+    </string-array>
+    <string-array name="wifi_scan_interval_value">
+        <item name="5">5</item>
+        <item name="10">10</item>
+        <item name="15">15</item>
+        <item name="30">30</item>
+        <item name="60">60</item>
+        <item name="120">120</item>
+    </string-array>
+    <color name="color_blue">#00BFFF</color>
+    <color name="color_red">#FF2222</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">TrafficOffloading APP</string>
+    <string name="sdn_control_switch_message">ONOS CONNECT</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="SwitchTextAppearance" parent="@android:style/TextAppearance.Holo.Small">
+       <item name="android:textColor">@color/color_blue</item>
+    </style>
+    <style name="SwitchTextOffAppearance" parent="@android:style/TextAppearance.Holo.Small">
+       <item name="android:textColor">@color/color_red</item>
+    </style>
+</resources>

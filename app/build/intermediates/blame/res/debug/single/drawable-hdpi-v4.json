@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mcn_logo.png",
+        "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\drawable-hdpi\\mcn_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\custom_switch.xml",
+        "source": "C:\\Users\\nhm\\AndroidStudioProjects\\TrafficOffloadingAndroidApp\\app\\src\\main\\res\\drawable-hdpi\\custom_switch.xml"
+    }
+]
