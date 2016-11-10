@@ -11,6 +11,7 @@ import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -64,7 +65,7 @@ public class TrafficOffloadingListener extends IntentService {
 
 	// some defaults
 	private String TOKEN = "\\|";
-	private String CONTROLLER_ADDRESS = "";//"141.223.107.139";
+	private String CONTROLLER_ADDRESS = "";
 	private int CONTROLLER_PORT = 1622;
 	// Message types
 	private final String MSG_SCAN = "scan";
@@ -85,7 +86,7 @@ public class TrafficOffloadingListener extends IntentService {
 				scanResult = new StringBuilder();
 				scanResult.append("scan|");
 				WifiManager wifiManager = (WifiManager) c.getSystemService(Context.WIFI_SERVICE);
-				String mac = wifiManager.getConnectionInfo().getMacAddress();
+				String mac =  getMACAddress("wlan0"); // wifiManager.getConnectionInfo().getMacAddress();
 				scanResult.append(mac);
 				if (isStatic) {
 					scanResult.append("|static");
@@ -101,7 +102,6 @@ public class TrafficOffloadingListener extends IntentService {
 				try {
 					SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 					CONTROLLER_ADDRESS= pref.getString("controller_ip","");
-					//CONTROLLER_ADDRESS = "141.223.107.139";
 			        Log.d(LOG_TAG, "send pkt to controller : " + CONTROLLER_ADDRESS);
 					InetAddress ipAddr = InetAddress.getByName(CONTROLLER_ADDRESS);
 					eventSender("send scan result to ONOS controller");
@@ -139,13 +139,12 @@ public class TrafficOffloadingListener extends IntentService {
 			WifiManager wifiManager2 = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
 			WifiInfo info= wifiManager2.getConnectionInfo();
 
-			String holemsg = "client|" + wifiManager2.getConnectionInfo().getMacAddress() + "|" + getLocalIpAddress(2)+"|"+ info.getSSID().replaceAll("\"","");
+			String holemsg = "client|" + getMACAddress("wlan0")/* wifiManager2.getConnectionInfo().getMacAddress()*/ + "|" + getLocalIpAddress(2)+"|"+ info.getSSID().replaceAll("\"","");
 			byte[] buf = holemsg.getBytes();
 
 			try {
 			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 			CONTROLLER_ADDRESS=pref.getString("controller_ip","");
-			//	CONTROLLER_ADDRESS = "141.223.107.139";
 	        Log.d(LOG_TAG, "send pkt to controller : " + CONTROLLER_ADDRESS);
 
 			DatagramPacket packet = new DatagramPacket(buf, buf.length, InetAddress.getByName(CONTROLLER_ADDRESS), CONTROLLER_PORT);
@@ -373,6 +372,27 @@ public class TrafficOffloadingListener extends IntentService {
 		return true;
 	}
 
+	public static String getMACAddress(String interfaceName) {
+		try {
+			List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+			for (NetworkInterface intf : interfaces) {
+				if (interfaceName != null) {
+					if (!intf.getName().equalsIgnoreCase(interfaceName)) continue;
+				}
+				byte[] mac = intf.getHardwareAddress();
+				if (mac==null) return "";
+				StringBuilder buf = new StringBuilder();
+				for (int idx=0; idx<mac.length; idx++)
+					buf.append(String.format("%02X:", mac[idx]));
+				if (buf.length()>0) buf.deleteCharAt(buf.length()-1);
+				return buf.toString();
+			}
+		} catch (Exception ex) { } // for now eat exceptions
+
+
+		return "";
+	}
+
 	
 
 	boolean isStatic() {
@@ -405,7 +425,7 @@ public class TrafficOffloadingListener extends IntentService {
 			WifiInfo info= wifiManager2.getConnectionInfo();
 			info.getSSID();
 
-			String holemsg = "client|" + wifiManager2.getConnectionInfo().getMacAddress() + "|" + getLocalIpAddress(2)+"|"+ info.getSSID().replaceAll("\"","");
+			String holemsg = "client|" +  getMACAddress("wlan0")/*wifiManager2.getConnectionInfo().getMacAddress()*/ + "|" + getLocalIpAddress(2)+"|"+ info.getSSID().replaceAll("\"","");
 			byte[] buf = holemsg.getBytes();
 		
 			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
